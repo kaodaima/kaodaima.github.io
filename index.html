@@ -1,12 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>终端有光</title>
+  <title>终端有光 - 程序员个人主页</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Microsoft YaHei';
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+      line-height: 1.6;
+      cursor: url('cursor.png'), auto;
+    }
+    a{
+      cursor: url('pointer.png'), auto;
+    }
+
+    
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      color: white;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 60px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+      overflow: hidden;
+      background: url('logo.png') no-repeat center center;
+      background-size: cover;
+
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .tagline {
+      font-size: 1.3em;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 25px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .social-links a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .content {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: #667eea;
+      font-size: 2em;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #667eea;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .skill-category {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-category h3 {
+      color: #667eea;
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: white;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.9em;
+      color: #667eea;
+      border: 1px solid #667eea;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 25px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      border-left: 4px solid #667eea;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card h3 {
+      color: #667eea;
+      margin-bottom: 10px;
+      font-size: 1.4em;
+    }
+
+    .project-card p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: white;
+      font-size: 0.9em;
+    }
+
+    .about-content {
+      font-size: 1.1em;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .tagline {
+        font-size: 1.1em;
+      }
+
+      .content {
+        padding: 25px;
+      }
+
+      .skills,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <div>愿你的终端，永远有光✨</div>
+  <div class="container">
+    <header>
+      <div class="avatar"></div>
+      <h1>终端有光</h1>
+      <p class="tagline">✨ 愿你的终端，永远有光 ✨</p>
+      <div class="social-links">
+        <a href="https://github.com/zh-dyg" target="_blank">GitHub</a>
+        <a href="https://gitee.com/zhdyg" target="_blank">Gitee</a>
+        <a href="#">Blog</a>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="section">
+        <h2>关于我</h2>
+        <div class="about-content">
+          <p>你好！我是终端有光，一名热爱编程的开发者。</p>
+          <p>我相信技术可以改变世界，代码可以创造价值。在终端的世界里，每一行代码都是一束光，照亮前行的道路。</p>
+          <p>持续学习，不断进步，用代码书写精彩人生。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>技能栈</h2>
+        <div class="skills">
+          <div class="skill-category">
+            <h3>前端开发</h3>
+            <div class="skill-tags">
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Vue.js</span>
+              <span class="tag">React</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>后端开发</h3>
+            <div class="skill-tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+              <span class="tag">Go</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3>工具与平台</h3>
+            <div class="skill-tags">
+              <span class="tag">Git</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Linux</span>
+              <span class="tag">VS Code</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>项目展示</h2>
+        <div class="projects">
+          <div class="project-card">
+            <h3>个人博客系统</h3>
+            <p>基于现代技术栈构建的个人博客平台，支持Markdown写作、代码高亮、评论系统等功能。</p>
+            <div class="project-tech">
+              <span class="tag">Vue.js</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>开发者工具集</h3>
+            <p>日常开发中常用的工具集合，包括JSON格式化、Base64编解码、时间戳转换等实用功能。</p>
+            <div class="project-tech">
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML/CSS</span>
+            </div>
+          </div>
+          <div class="project-card">
+            <h3>API接口项目</h3>
+            <p>RESTful API服务，提供数据管理、用户认证、权限控制等核心功能。</p>
+            <div class="project-tech">
+              <span class="tag">Java</span>
+              <span class="tag">SpringBoot</span>
+              <span class="tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 终端有光. Keep coding, keep shining! ✨</p>
+    </footer>
+  </div>
 </body>
+
 </html>
